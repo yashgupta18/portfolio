@@ -3,7 +3,7 @@ import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi';
 import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import { useState } from 'react';
 
-const Contact = () => {
+const Contact = ({ darkMode }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,7 +48,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-gray-50 dark:bg-gray-900/50 py-20 px-4">
+    <section id="contact" className="section-padding py-20 px-4" style={{ background: darkMode ? 'rgba(0, 0, 0, 0.2)' : 'rgba(249, 250, 251, 0.5)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
             Get In Touch
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
             Have a project in mind or want to collaborate? I'd love to hear from you!
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mt-4"></div>
@@ -76,10 +76,10 @@ const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+              <h3 className="text-3xl font-bold mb-6" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
                 Let's talk about everything!
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-8">
+              <p className="mb-8" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
                 Don't like forms? Send me an email or connect with me on social media.
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
               </p>
@@ -92,16 +92,21 @@ const Contact = () => {
                   key={index}
                   href={item.link}
                   whileHover={{ x: 10 }}
-                  className="flex items-center space-x-4 glass-effect rounded-xl p-5 hover:bg-white/20 dark:hover:bg-white/10 transition-all"
+                  className="flex items-center space-x-4 rounded-xl p-5 transition-all"
+                  style={{
+                    background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                    border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                    backdropFilter: 'blur(20px)'
+                  }}
                 >
                   <div className={`p-4 bg-gradient-to-r ${item.gradient} rounded-lg`}>
                     <item.icon className="text-white" size={24} />
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                    <h4 className="font-semibold mb-1" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
                       {item.title}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
                       {item.value}
                     </p>
                   </div>
@@ -111,7 +116,7 @@ const Contact = () => {
 
             {/* Social Links */}
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
+              <h4 className="font-semibold mb-4" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
                 Connect with me
               </h4>
               <div className="flex space-x-4">
@@ -123,7 +128,13 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
-                    className={`p-4 glass-effect rounded-full transition-colors ${social.color}`}
+                    className="p-4 rounded-full transition-colors"
+                    style={{
+                      background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                      border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                      backdropFilter: 'blur(20px)',
+                      color: darkMode ? '#d1d5db' : '#374151'
+                    }}
                     aria-label={social.label}
                   >
                     <social.icon size={24} />
@@ -139,11 +150,16 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-effect rounded-2xl p-8"
+            className="rounded-2xl p-8"
+            style={{
+              background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+              border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+              backdropFilter: 'blur(20px)'
+            }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium mb-2" style={{ color: darkMode ? '#d1d5db' : '#374151' }}>
                   Your Name
                 </label>
                 <input
@@ -151,13 +167,18 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  className="w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  style={{
+                    background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+                    border: `1px solid ${darkMode ? '#374151' : '#d1d5db'}`,
+                    color: darkMode ? '#ffffff' : '#111827'
+                  }}
                   placeholder="John Doe"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium mb-2" style={{ color: darkMode ? '#d1d5db' : '#374151' }}>
                   Your Email
                 </label>
                 <input
@@ -165,13 +186,18 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  className="w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  style={{
+                    background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+                    border: `1px solid ${darkMode ? '#374151' : '#d1d5db'}`,
+                    color: darkMode ? '#ffffff' : '#111827'
+                  }}
                   placeholder="john@example.com"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium mb-2" style={{ color: darkMode ? '#d1d5db' : '#374151' }}>
                   Subject
                 </label>
                 <input
@@ -179,13 +205,18 @@ const Contact = () => {
                   required
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  className="w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  style={{
+                    background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+                    border: `1px solid ${darkMode ? '#374151' : '#d1d5db'}`,
+                    color: darkMode ? '#ffffff' : '#111827'
+                  }}
                   placeholder="Project Discussion"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium mb-2" style={{ color: darkMode ? '#d1d5db' : '#374151' }}>
                   Message
                 </label>
                 <textarea
@@ -193,7 +224,12 @@ const Contact = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={5}
-                  className="w-full px-4 py-3 bg-white/50 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all resize-none"
+                  style={{
+                    background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+                    border: `1px solid ${darkMode ? '#374151' : '#d1d5db'}`,
+                    color: darkMode ? '#ffffff' : '#111827'
+                  }}
                   placeholder="Tell me about your project..."
                 />
               </div>

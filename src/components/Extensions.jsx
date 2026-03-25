@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { FiCode, FiDownload, FiStar, FiUsers, FiGithub } from 'react-icons/fi';
 import { SiGooglechrome } from 'react-icons/si';
 
-const Extensions = () => {
+const Extensions = ({ darkMode }) => {
   const browserExtensions = [
     {
       name: 'Shopping List Extension',
@@ -41,24 +41,32 @@ const Extensions = () => {
       viewport={{ once: true }}
       whileHover={{ y: -10 }}
       transition={{ duration: 0.3 }}
-      className="glass-effect rounded-2xl p-6 hover:shadow-2xl transition-all duration-300"
+      className="rounded-2xl p-6 hover:shadow-2xl transition-all duration-300"
+      style={{
+        background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+        border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+        backdropFilter: 'blur(20px)'
+      }}
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className={`p-4 bg-gradient-to-r ${extension.color} rounded-xl`}>
           <extension.icon className="text-white" size={32} />
         </div>
-        <div className="flex items-center space-x-1 glass-effect px-3 py-1 rounded-full">
+        <div className="flex items-center space-x-1 px-3 py-1 rounded-full" style={{
+          background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+          backdropFilter: 'blur(10px)'
+        }}>
           <FiStar className="text-yellow-500" size={16} />
           <span className="text-sm font-semibold">{extension.rating}</span>
         </div>
       </div>
 
       {/* Content */}
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+      <h3 className="text-xl font-bold mb-2" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
         {extension.name}
       </h3>
-      <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+      <p className="mb-4 line-clamp-2" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
         {extension.description}
       </p>
 
@@ -67,7 +75,11 @@ const Extensions = () => {
         {extension.tags.map((tag, index) => (
           <span
             key={index}
-            className="px-3 py-1 text-xs font-medium bg-white/50 dark:bg-gray-800/50 rounded-full"
+            className="px-3 py-1 text-xs font-medium rounded-full"
+            style={{
+              background: darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.8)',
+              color: darkMode ? '#d1d5db' : '#374151'
+            }}
           >
             {tag}
           </span>
@@ -75,7 +87,7 @@ const Extensions = () => {
       </div>
 
       {/* Stats */}
-      <div className="flex items-center justify-between mb-4 text-sm text-gray-600 dark:text-gray-400">
+      <div className="flex items-center justify-between mb-4 text-sm" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
         <div className="flex items-center space-x-1">
           <FiDownload size={16} />
           <span>{extension.downloads}</span>
@@ -101,7 +113,12 @@ const Extensions = () => {
             href={extension.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-3 glass-effect rounded-xl font-semibold hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-200 flex items-center justify-center"
+            className="px-4 py-3 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center"
+            style={{
+              background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+              backdropFilter: 'blur(20px)',
+              color: darkMode ? '#d1d5db' : '#374151'
+            }}
             title="View on GitHub"
           >
             <FiGithub size={20} />
@@ -112,7 +129,7 @@ const Extensions = () => {
   );
 
   return (
-    <section id="extensions" className="section-padding bg-gray-50 dark:bg-gray-900/50 py-20 px-4">
+    <section id="extensions" className="section-padding py-20 px-4" style={{ background: darkMode ? 'rgba(0, 0, 0, 0.2)' : 'rgba(249, 250, 251, 0.5)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { FiCalendar, FiClock, FiExternalLink } from 'react-icons/fi';
 import { SiMedium, SiHashnode, SiDevdotto } from 'react-icons/si';
 
-const Blog = () => {
+const Blog = ({ darkMode }) => {
   const blogs = [
     {
       title: 'State Management with Context API & Custom MultiSelect Hook in React',
@@ -85,7 +85,7 @@ const Blog = () => {
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
             Blog & Articles
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
             Sharing knowledge about web development, DevOps, and modern technologies
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mt-4"></div>
@@ -105,10 +105,15 @@ const Blog = () => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -5 }}
-              className="flex items-center space-x-2 px-6 py-3 glass-effect rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all"
+              className="flex items-center space-x-2 px-6 py-3 rounded-xl transition-all"
+              style={{
+                background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                backdropFilter: 'blur(20px)'
+              }}
             >
               <platform.icon size={24} className={platform.color} />
-              <span className="font-medium text-gray-700 dark:text-gray-300">{platform.name}</span>
+              <span className="font-medium" style={{ color: darkMode ? '#d1d5db' : '#374151' }}>{platform.name}</span>
             </motion.a>
           ))}
         </motion.div>
@@ -123,29 +128,37 @@ const Blog = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="glass-effect rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+              className="rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+              style={{
+                background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+                border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                backdropFilter: 'blur(20px)'
+              }}
             >
               {/* Featured Image */}
               <div className={`h-48 bg-gradient-to-br ${blog.gradient} relative overflow-hidden`}>
                 <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold opacity-20">
                   <blog.icon />
                 </div>
-                <div className="absolute top-4 right-4 glass-effect px-3 py-1 rounded-full text-sm font-medium text-white">
+                <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium text-white" style={{
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  backdropFilter: 'blur(10px)'
+                }}>
                   {blog.platform}
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <h3 className="text-xl font-bold mb-3 line-clamp-2 transition-colors" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
                   {blog.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                <p className="mb-4 line-clamp-3" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
                   {blog.excerpt}
                 </p>
 
                 {/* Meta Info */}
-                <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-500 mb-4">
+                <div className="flex items-center justify-between text-sm mb-4" style={{ color: darkMode ? '#6b7280' : '#6b7280' }}>
                   <div className="flex items-center space-x-1">
                     <FiCalendar size={16} />
                     <span>{blog.date}</span>

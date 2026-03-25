@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiCode, FiDatabase, FiGitBranch, FiServer } from 'react-icons/fi';
 
-const About = () => {
+const About = ({ darkMode }) => {
   const stats = [
     { label: 'Years Experience', value: '5+' },
     { label: 'Projects Completed', value: '15+' },
@@ -56,11 +56,11 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto mb-16"
         >
-          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-            Building exceptional digital experiences with <span className="font-semibold text-indigo-600 dark:text-indigo-400">React.js, Next.js, TypeScript, Node.js, and MongoDB</span>.
+          <p className="text-xl md:text-2xl mb-6 leading-relaxed" style={{ color: darkMode ? '#d1d5db' : '#374151' }}>
+            Building exceptional digital experiences with <span className="font-semibold" style={{ color: darkMode ? '#a78bfa' : '#6366f1' }}>React.js, Next.js, TypeScript, Node.js, and MongoDB</span>.
             Passionate about DevOps, testing, and creating user-centric applications that solve real problems.
           </p>
-          <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-lg leading-relaxed" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
             Always experimenting with new ideas, building browser and VSCode extensions, and sharing what I learn
             through technical writing on Medium and Hashnode.
           </p>
@@ -76,12 +76,17 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="glass-effect rounded-2xl p-6 text-center"
+              className="rounded-2xl p-6 text-center"
+              style={{
+                background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                backdropFilter: 'blur(20px)'
+              }}
             >
               <div className="text-4xl font-bold gradient-text mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-sm" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
                 {stat.label}
               </div>
             </motion.div>
@@ -98,15 +103,20 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="glass-effect rounded-xl p-6 text-center"
+              className="rounded-xl p-6 text-center"
+              style={{
+                background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                backdropFilter: 'blur(20px)'
+              }}
             >
               <div className="inline-block p-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg mb-4">
                 <item.icon className="text-white" size={28} />
               </div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+              <h4 className="font-semibold mb-2" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
                 {item.title}
               </h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
                 {item.desc}
               </p>
             </motion.div>
@@ -121,7 +131,11 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="inline-block glass-effect rounded-2xl p-8">
+          <div className="inline-block rounded-2xl p-8" style={{
+            background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+            border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+            backdropFilter: 'blur(20px)'
+          }}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { label: 'Email', value: '18guptayash@gmail.com' },

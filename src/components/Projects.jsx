@@ -3,7 +3,7 @@ import { FiGithub, FiExternalLink, FiPackage } from 'react-icons/fi';
 import { SiNpm } from 'react-icons/si';
 import { useState } from 'react';
 
-const Projects = () => {
+const Projects = ({ darkMode }) => {
   const [filter, setFilter] = useState('all');
 
   const projects = [
@@ -33,7 +33,7 @@ const Projects = () => {
       image: '/api/placeholder/400/300',
       tags: ['Next.js', 'Node.js', 'MongoDB'],
       category: 'fullstack',
-      github: 'https://github.com/yashgupta18',
+      github: 'https://github.com/yashgupta18/nextjs_prompt',
       demo: 'https://nextjs-prompt.vercel.app/',
     },
     {
@@ -42,7 +42,7 @@ const Projects = () => {
       image: '/api/placeholder/400/300',
       tags: ['React', 'Node.js', 'MongoDB'],
       category: 'fullstack',
-      github: 'https://github.com/yashgupta18',
+      github: 'https://github.com/yashgupta18/memeFrontend',
       demo: 'https://meme-webapp.netlify.app',
     },
     {
@@ -108,7 +108,7 @@ const Projects = () => {
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
             Featured Projects
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
+          <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
             A collection of projects showcasing my skills in modern web development
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full"></div>
@@ -123,8 +123,14 @@ const Projects = () => {
               className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                 filter === cat.id
                   ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-                  : 'glass-effect hover:bg-white/20 dark:hover:bg-white/10'
+                  : ''
               }`}
+              style={filter !== cat.id ? {
+                background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                backdropFilter: 'blur(20px)',
+                color: darkMode ? '#d1d5db' : '#374151'
+              } : {}}
             >
               {cat.label}
             </button>
@@ -141,7 +147,12 @@ const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="glass-effect rounded-2xl overflow-hidden group"
+              className="rounded-2xl overflow-hidden group"
+              style={{
+                background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+                border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                backdropFilter: 'blur(20px)'
+              }}
             >
               {/* Project Image/Icon */}
               <div className={`relative h-48 ${project.icon ? 'bg-gradient-to-br from-red-500 to-orange-500' : 'bg-gradient-to-br from-indigo-500 to-purple-600'} overflow-hidden`}>
@@ -176,17 +187,21 @@ const Projects = () => {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-xl font-bold mb-2" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                <p className="mb-4 line-clamp-2" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="px-3 py-1 text-xs font-medium bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full"
+                      className="px-3 py-1 text-xs font-medium rounded-full"
+                      style={{
+                        background: darkMode ? 'rgba(99, 102, 241, 0.2)' : 'rgba(99, 102, 241, 0.1)',
+                        color: darkMode ? '#a78bfa' : '#6366f1'
+                      }}
                     >
                       {tag}
                     </span>

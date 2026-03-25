@@ -73,7 +73,6 @@ const Hero = ({ darkMode }) => {
             {[
               { icon: FiGithub, href: 'https://github.com/yashgupta18', label: 'GitHub' },
               { icon: FiLinkedin, href: 'https://www.linkedin.com/in/yg18/', label: 'LinkedIn' },
-              { icon: FiTwitter, href: 'https://twitter.com/Yash_gupta18', label: 'Twitter' },
               { icon: FiMail, href: 'mailto:18guptayash@gmail.com', label: 'Email' },
             ].map((social, index) => (
               <motion.a

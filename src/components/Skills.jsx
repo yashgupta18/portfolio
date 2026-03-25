@@ -18,7 +18,7 @@ import {
   SiGithubactions,
 } from 'react-icons/si';
 
-const Skills = () => {
+const Skills = ({ darkMode }) => {
   const skillCategories = [
     {
       title: 'Frontend',
@@ -59,7 +59,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="section-padding bg-gray-50 dark:bg-gray-900/50 py-20 px-4">
+    <section id="skills" className="section-padding py-20 px-4" style={{ background: darkMode ? 'rgba(0, 0, 0, 0.2)' : 'rgba(249, 250, 251, 0.5)' }}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -71,7 +71,7 @@ const Skills = () => {
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
             Skills & Technologies
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
             A comprehensive toolkit of modern technologies I use to build exceptional applications
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mt-4"></div>
@@ -85,9 +85,14 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="glass-effect rounded-2xl p-8"
+              className="rounded-2xl p-8"
+              style={{
+                background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+                border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                backdropFilter: 'blur(20px)'
+              }}
             >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <h3 className="text-2xl font-bold mb-6" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
                 {category.title}
               </h3>
               <div className="grid grid-cols-2 gap-6">
@@ -95,14 +100,18 @@ const Skills = () => {
                   <motion.div
                     key={skillIndex}
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                    className="flex flex-col items-center justify-center p-4 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                    style={{
+                      background: darkMode ? '#1f2937' : '#ffffff',
+                      border: `1px solid ${darkMode ? '#374151' : '#e5e7eb'}`
+                    }}
                   >
                     <skill.icon
                       size={48}
                       style={{ color: skill.color }}
                       className="mb-3"
                     />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
+                    <span className="text-sm font-medium text-center" style={{ color: darkMode ? '#d1d5db' : '#374151' }}>
                       {skill.name}
                     </span>
                   </motion.div>
