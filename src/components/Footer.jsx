@@ -16,7 +16,6 @@ const Footer = ({ darkMode }) => {
   const socialLinks = [
     { icon: FiGithub, href: 'https://github.com/yashgupta18', label: 'GitHub' },
     { icon: FiLinkedin, href: 'https://www.linkedin.com/in/yg18/', label: 'LinkedIn' },
-    { icon: FiTwitter, href: 'https://twitter.com/Yash_gupta18', label: 'Twitter' },
     { icon: SiMedium, href: 'https://medium.com/@yashguptaa', label: 'Medium' },
     { icon: SiHashnode, href: 'https://yash.hashnode.dev/', label: 'Hashnode' },
     { icon: SiDevdotto, href: 'https://dev.to/yashgupta18', label: 'Dev.to' },
