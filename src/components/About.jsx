@@ -144,8 +144,8 @@ const About = ({ darkMode }) => {
                 { label: 'Availability', value: 'Open to opportunities' },
               ].map((info, index) => (
                 <div key={index} className="flex flex-col">
-                  <span className="text-sm text-gray-500 dark:text-gray-500 mb-1">{info.label}</span>
-                  <span className="text-gray-900 dark:text-white font-medium">{info.value}</span>
+                  <span className="text-sm mb-1" style={{ color: darkMode ? '#6b7280' : '#6b7280' }}>{info.label}</span>
+                  <span className="font-medium" style={{ color: darkMode ? '#ffffff' : '#111827' }}>{info.value}</span>
                 </div>
               ))}
             </div>

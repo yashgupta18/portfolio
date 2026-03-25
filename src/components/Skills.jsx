@@ -129,7 +129,7 @@ const Skills = ({ darkMode }) => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
+          <h4 className="text-xl font-semibold mb-6" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
             Other Technologies & Tools
           </h4>
           <div className="flex flex-wrap justify-center gap-3">
@@ -137,7 +137,13 @@ const Skills = ({ darkMode }) => {
               <motion.span
                 key={index}
                 whileHover={{ scale: 1.1 }}
-                className="px-4 py-2 glass-effect rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 cursor-default"
+                className="px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style={{
+                  background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                  border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                  backdropFilter: 'blur(20px)',
+                  color: darkMode ? '#d1d5db' : '#374151'
+                }}
               >
                 {tech}
               </motion.span>

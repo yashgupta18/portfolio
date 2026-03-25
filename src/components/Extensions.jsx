@@ -141,7 +141,7 @@ const Extensions = ({ darkMode }) => {
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
             Browser & VSCode Extensions
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
             Tools I've built to enhance productivity and workflow
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto rounded-full mt-4"></div>
@@ -156,7 +156,7 @@ const Extensions = ({ darkMode }) => {
             className="flex items-center justify-center space-x-3 mb-8"
           >
             <SiGooglechrome size={32} className="text-blue-500" />
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h3 className="text-2xl font-bold" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
               Browser Extensions
             </h3>
           </motion.div>
@@ -176,7 +176,7 @@ const Extensions = ({ darkMode }) => {
             className="flex items-center justify-center space-x-3 mb-8"
           >
             <FiCode size={32} className="text-blue-600" />
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h3 className="text-2xl font-bold" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
               VSCode Extensions
             </h3>
           </motion.div>
@@ -194,11 +194,15 @@ const Extensions = ({ darkMode }) => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="glass-effect rounded-2xl p-8 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="rounded-2xl p-8 max-w-3xl mx-auto" style={{
+            background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)',
+            border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+            backdropFilter: 'blur(20px)'
+          }}>
+            <h3 className="text-2xl font-bold mb-4" style={{ color: darkMode ? '#ffffff' : '#111827' }}>
               Want to Collaborate on an Extension?
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
+            <p className="mb-6" style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}>
               I'm always working on new browser and VSCode extensions to solve real problems. Got a suggestion or want to collaborate?
             </p>
             <a
