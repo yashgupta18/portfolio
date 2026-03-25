@@ -33,16 +33,23 @@ function App() {
   }, [darkMode]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-slate-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 transition-colors duration-500">
+    <div
+      className="min-h-screen transition-colors duration-500"
+      style={{
+        background: darkMode
+          ? 'linear-gradient(to bottom right, #111827, #1e293b, #312e81)'
+          : 'linear-gradient(to bottom right, #ffffff, #f9fafb, #f1f5f9)'
+      }}
+    >
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Extensions />
-      <Blog />
-      <Contact />
-      <Footer />
+      <Hero darkMode={darkMode} />
+      <About darkMode={darkMode} />
+      <Skills darkMode={darkMode} />
+      <Projects darkMode={darkMode} />
+      <Extensions darkMode={darkMode} />
+      <Blog darkMode={darkMode} />
+      <Contact darkMode={darkMode} />
+      <Footer darkMode={darkMode} />
     </div>
   );
 }

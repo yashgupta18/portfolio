@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
 
-const Hero = () => {
+const Hero = ({ darkMode }) => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       {/* Animated Background Elements */}
@@ -38,7 +38,8 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-4"
+            className="text-xl md:text-2xl mb-4"
+            style={{ color: darkMode ? '#9ca3af' : '#4b5563' }}
           >
             Hey! I am
           </motion.h2>
@@ -56,7 +57,8 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-12"
+            className="text-2xl md:text-3xl mb-12"
+            style={{ color: darkMode ? '#d1d5db' : '#374151' }}
           >
             Full-Stack Developer
           </motion.div>
@@ -81,7 +83,13 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="p-4 glass-effect rounded-full hover:bg-indigo-500/20 transition-colors"
+                className="p-4 glass-effect rounded-full transition-colors"
+                style={{
+                  color: darkMode ? '#d1d5db' : '#374151',
+                  background: darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.3)',
+                  border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                  backdropFilter: 'blur(20px)'
+                }}
                 aria-label={social.label}
               >
                 <social.icon size={24} />

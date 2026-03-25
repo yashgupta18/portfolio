@@ -28,11 +28,13 @@ const Navbar = ({ darkMode, setDarkMode }) => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className="fixed w-full z-50 transition-all duration-300 backdrop-blur-lg shadow-lg"
+      style={{
+        background: scrolled
+          ? `${darkMode ? 'rgba(17, 24, 39, 0.8)' : 'rgba(255, 255, 255, 0.8)'}`
+          : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none'
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -51,7 +53,8 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
+                className="transition-colors duration-200"
+                style={{ color: darkMode ? '#d1d5db' : '#374151' }}
               >
                 {item.name}
               </a>
@@ -60,7 +63,10 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              className="p-2 rounded-full transition-colors"
+              style={{
+                background: darkMode ? '#374151' : '#e5e7eb'
+              }}
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
@@ -75,7 +81,8 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
+              className="p-2 rounded-full"
+              style={{ background: darkMode ? '#374151' : '#e5e7eb' }}
               aria-label="Toggle dark mode"
             >
               {darkMode ? (
@@ -86,7 +93,11 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
+              className="p-2 rounded-lg"
+              style={{
+                background: darkMode ? '#374151' : '#e5e7eb',
+                color: darkMode ? '#d1d5db' : '#374151'
+              }}
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -100,7 +111,10 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800"
+          style={{
+            background: darkMode ? '#111827' : '#ffffff',
+            borderTop: `1px solid ${darkMode ? '#1f2937' : '#e5e7eb'}`
+          }}
         >
           <div className="px-4 pt-2 pb-4 space-y-2">
             {navItems.map((item) => (
@@ -108,7 +122,8 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                className="block py-2 transition-colors"
+                style={{ color: darkMode ? '#d1d5db' : '#374151' }}
               >
                 {item.name}
               </a>
